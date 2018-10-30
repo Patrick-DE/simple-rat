@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <title>Here we go!</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css" media="screen" />
+    <script src="functions.js"></script>
+</head>
+
+<body>
+    <h1 style="text-align: center">Simple-RAT Master</h1>
+    <div style="text-align: center" id="sse">
+        <button id="connect" onclick="startWebSocket()">Connect!</button>
+        <input type="text" id="connect_ip" value="" size="30" style="width:95%" placeholder="Server-IP"
+                autofocus>
+        <button id="disconnect" style="display:none" onclick="stopWebSocket()">Disconnect!</button>
+    </div>
+    <br /><br /><br />
+    <hr>
+    <div>
+        <button onclick="sendCommand(0)">OS Info</button>
+        <button onclick="sendCommand(1)">PROCESS Info</button>
+        <button onclick="sendCommand(2)">NIC Info</button>
+        <button onclick="sendCommand(3)">Screenshot</button>
+    </div>
+    <div>
+        <button onclick="fillCommand(0)">Read FS</button>
+        <button onclick="fillCommand(1)">SendKey</button>
+        <button onclick="fillCommand(2)">SendMouse</button>
+        <button onclick="fillCommand(3)">HTTP-GET</button>
+        <button onclick="fillCommand(4)">HTTP-POST</button>
+        <button onclick="fillCommand(5)">RCE</button>
+    </div>
+    <div>
+        <button onclick="sendCommand(4)">9GAG</button>
+        <button onclick="sendCommand(5)">Regedit</button>
+        <button onclick="sendCommand(6)">Calculator</button>
+        <button onclick="sendCommand(7)">Google</button>
+        <button onclick="sendCommand(8)">Hack the system!</button>
+    </div>
+    <div>
+        <button onclick="sendCommand(10)">LINUX - Hack the system!</button>
+        <button onclick="sendCommand(11)">LINUX - Download Update</button>
+    </div>
+    <div>
+        <button onclick="clearDiv(1)">Clear Output</button>
+        <button onclick="clearDiv(0)">Clear Error</button>
+    </div>
+
+    <input type="text" id="command" value="" size="30" style="width:95%" placeholder="Custom commands"
+                autofocus>
+    <select id="bot_select">
+    </select>
+    <button onclick="sendCustomCommand(document.getElementById('command').value)">Send</button>
+    <div style="width:100%; height:60%; overflow:scroll;" id="output"></div>
+    <div style="width:100%; height:60%; overflow:scroll;" id="error"></div>
+
+</body>
+<script type="text/javascript">
+    window.onbeforeunload = function(){
+        console.log("Closing websocket...");
+        stopWebSocket();
+    }
+    window.addEventListener("beforeunload", function(e){
+        console.log("Closing websocket...");
+        stopWebSocket();
+    }, false);
+</script>
+
+</html>
